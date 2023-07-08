@@ -1,0 +1,235 @@
+/**
+ * This class includes properties of project and calculates project cost and project resources.
+ * @author Esad Ismail Tök
+ * @version 02.05.2019
+ */ 
+
+public class Project {
+  
+  //Constant data members
+  private final int TAX = 19;
+  private final int OVERHEAD = 30000;
+  private final int EMP_HOURS_WEEK = 40;
+  
+  //Static Variables
+  public static int projectCounter = 1000;
+  
+  //Instance data members
+  private String projectId;
+  private String projectName;
+  private char projectType;
+  private int personHours;
+  private double ratePerHour;
+  private int projectWeeks;
+  
+  /**
+   -Constructor
+   Initialize the Project name, rate per hours, person hours and Project weeks
+   @param name Name of the Project
+   @param person_hours Estimated person hours for the Project
+   @param rate_per_hours Standard rate person hour
+   @param project_weeks Estimated duration of the Project in weeks
+   */
+  public Project( String name, int person_hours, double rate_per_hours, int project_weeks ) {
+    setProjectName(name);
+    setPersonHours( person_hours );
+    setRatePerHour(rate_per_hours);
+    setProjectWeeks(project_weeks);
+    setProjectType();
+    setProjectId();
+  }
+  
+  /**
+   Sets the Project's Name
+   */
+  public void setProjectName( String name ) {
+    this.projectName = name;
+  }
+  
+  /**
+   Sets the person Hours
+   */
+  public void setPersonHours( int personHours ) {  //zero condition?
+    if ( personHours >= 0) {
+      this.personHours = personHours;
+    }
+    else {
+      this.personHours = 0;
+    }
+  }
+  
+  /**
+   Sets the rate per hour
+   */
+  public void setRatePerHour( double ratePerHour ) {
+    if ( ratePerHour >= 0 ) {
+      this.ratePerHour = ratePerHour;
+    }
+    else {
+      this.ratePerHour = 0;
+    }
+  }
+  
+  /**
+   Sets the Project weeks
+   */
+  public void setProjectWeeks( int projectWeeks ) {
+    if ( projectWeeks >= 0 ) {
+      this.personHours = projectWeeks;
+    }
+    else {
+      this.projectWeeks = 0;
+    }
+  }
+  
+  /**
+   Sets the Project ID
+   */
+  private void setProjectId() {
+    this.projectId = "2019 - " + projectCounter;
+    projectCounter++;
+  }
+  
+  /**
+   * Sets Project Type after validating
+   */
+  public void setProjectType() {
+    double cost;
+    cost = calculateProjectCost( getPersonHours(), getRatePerHour() );
+    if ( cost > 500000) {
+      projectType = 'm';
+    }
+    else if ( 500000 >= cost && cost >= 100000 ) {
+      projectType = 'a';
+    }
+    else if ( 100000 > cost && cost > 0 ) {
+      projectType = 's';
+    }
+    else if ( 0 >= cost ) {
+      deactivateProject();
+    }
+  } 
+  
+  //Accessors
+  /**
+   gets the Project ID.
+   @return projectId
+   */
+  public String getProjectId() {
+    return projectId;
+  }
+  
+  /**
+   gets the Project Name.
+   @return projectName
+   */
+  public String getProjectName() {
+    return projectName;
+  }
+  
+  /**
+   gets the Project Type
+   @return projectType 
+   */
+  public char getProjectType() {
+    return projectType;
+  }
+  
+  /**
+   gets the Person Hours
+   @return personHours
+   */
+  public int getPersonHours() {
+    return personHours;
+  }
+  
+  /**
+   gets the Rate per Hour
+   @return ratePerHour
+   */
+  public double getRatePerHour() {
+    return ratePerHour;
+  }
+  
+  /**
+   gets the Project weeks.
+   @return projectWeeks
+   */
+  public int getProjectWeeks() {
+    return projectWeeks;
+  }
+  
+  /**
+   Deactivate the Project
+   */
+  public void deactivateProject() {
+    projectType = 'i';
+  }
+  
+  /**
+   Calculates the Project's costs.
+   @return Total cost of Project
+   */
+  public double calculateProjectCost(int personHours, double ratePerHour) {
+    double cost;
+    cost = personHours * ratePerHour;
+    cost = cost * ( 100 + TAX ) / 100;
+    if (cost >= 20000) {
+      cost = cost + OVERHEAD;
+    }
+    return cost;
+  }
+  
+  /**
+   Calculates the Project Resources.
+   @return Employer number which need for Project
+   */
+  public int calculateProjectResources( int personHours, int projectWeeks) {
+    int employer_number;
+    if ( personHours * projectWeeks % EMP_HOURS_WEEK == 0 ) {
+      employer_number = personHours * projectWeeks / EMP_HOURS_WEEK;
+    }
+    else {
+      employer_number = personHours * projectWeeks / EMP_HOURS_WEEK + 1;
+    }
+    return employer_number ;
+  }
+  
+  /**
+   Returns a string representation of Project
+   */
+  public String toString() {
+    if ( getProjectType() == 'i' ) {
+      return "-------INACTIVE PROJECT-------" +
+        "\nProject Name: " + getProjectName() +
+        "\nProject ID: " + getProjectId() + "\n";
+    }
+    else {
+      return "Project Name: " + getProjectName() +
+        "\nProject ID: " + getProjectId() + 
+        "\nProject Type: " + getProjectType() +
+        "\nTeam Size: " + calculateProjectResources( getPersonHours(), getProjectWeeks() ) + 
+        "\nEstimated Project Cost: " + calculateProjectCost( getPersonHours(), getRatePerHour() ) + "\n"; 
+    }
+  }
+  
+  /** 
+   Compares two Project's costs and return the result, who is greater.
+   @return Integer which correspond to the outcome.
+   */
+  public int compareProjects( Project other ) {
+    //Variables
+    double cost1;
+    double cost2;
+    
+    cost1 = calculateProjectCost( personHours, ratePerHour);
+    cost2 = other.calculateProjectCost( other.personHours, other.ratePerHour );
+    if ( cost1 > cost2 ) {
+      return 1;
+    }
+    if ( cost1 < cost2 ) {
+      return -1;
+    }
+    return 0;
+  }
+}

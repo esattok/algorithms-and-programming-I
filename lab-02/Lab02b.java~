@@ -1,0 +1,70 @@
+import java.util.Scanner;
+  public class Lab02b 
+{
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    System.out.println( "Student information" );
+    
+    System.out.print( "Enter name: " );
+    String name = scan.next();
+    
+    System.out.print( "Enter surname: " );
+    String surname = scan.next();
+    
+    System.out.print( "Enter ID: " );
+    int ID = scan.nextInt();
+    
+    System.out.println( "CS101 grades" );
+    
+    System.out.print( "Enter the midterm 1 grade: " );
+    int midterm1Grade_CS101 = scan.nextInt();
+    
+    System.out.print( "Enter the midterm2 grade: " );
+    int midterm2Grade_CS101 = scan.nextInt();
+    
+    System.out.print( "Enter the final grade: " );
+    int finalGrade_CS101 = scan.nextInt();
+    
+    System.out.println("");
+    
+    System.out.println( "CS201 grades" );
+    
+    System.out.print( "Enter the midterm 1 grade: ");
+    int midterm1Grade_CS201 = scan.nextInt();
+    
+    System.out.print( "Enter the midterm 2 grade: " );
+    int midterm2Grade_CS201 = scan.nextInt();
+    
+    System.out.print( "Enter the final grade: " );
+    int finalGrade_CS201 = scan.nextInt();
+    
+    String fName;
+    String lName;
+    
+    fName = "\"Joe";
+    lName = "Doe\"";
+    
+    String fullName = fName + " " + lName;
+    System.out.println( "The student is " + fullName + ". His/her ID is 12345" );
+    System.out.println( "Grades" );
+    double mid1CS101;
+    double mid2CS101;
+    double finalCS101;
+    mid1CS101 = 91;
+    mid2CS101 = 94;
+    finalCS101 = 99;
+    double mid1CS201, mid2CS201, finalCS201;
+    mid1CS201 = 81;
+    mid2CS201 = 89;
+    finalCS201 = 85;
+    System.out.println( "|          |Mid1 |Mid2 |Final|" );
+    System.out.println( "| CS101    |"+mid1CS101+" |"+mid2CS101+" |"+finalCS101+" |" );
+    System.out.println( "| CS201    |"+mid1CS201+" |"+mid2CS201+" |"+finalCS201+" |" );
+    
+                       
+    
+    
+  }
+  }
+    

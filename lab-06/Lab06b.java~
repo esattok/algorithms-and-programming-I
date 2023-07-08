@@ -1,0 +1,45 @@
+ import java.util.Scanner;
+ 
+ public class Lab06b 
+ {
+  static String SUB_SEQUENCE = "bc";
+ 
+  public static int bc_finder( String str )
+  {
+   int position;
+   int count = 0;
+   
+   for ( int i = 0; i < str.length(); i++ )
+   {
+    position = str.indexOf( SUB_SEQUENCE, i - 1 );
+    if ( i == position )
+    {
+     count++;
+    }
+   }
+   return count;
+  }
+  public static void main( String[] args )
+  {
+   Scanner scan = new Scanner( System.in );
+   
+   String str;
+   int count;
+   int first_position;
+   
+   System.out.print( "Enter the sequence : " );
+   str = scan.next();
+   first_position = str.indexOf( SUB_SEQUENCE );
+   count = bc_finder(str); 
+   if ( count > 0 )
+   {
+    System.out.println( "The number of \"bc\" in the sequence : " + count );
+    System.out.println( "First part of string is " + str.substring( 0, first_position ) );
+    System.out.println( "Second part of string is "+ str.substring( first_position + 2, str.length() ));
+   }
+   else
+   {
+    System.out.println( "The string doesn't contain any substring \"bc\"s!");
+   }
+  }
+ }

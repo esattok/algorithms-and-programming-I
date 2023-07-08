@@ -1,0 +1,59 @@
+/** 
+ * Onur Korkmaz 
+ *  
+ * Finding first n fibonacci numbers which is enterin from user 
+ */ 
+import java.util.ArrayList; 
+import java.util.*; 
+public class Lab09a{ 
+  public static void main(String[] arg){ 
+    Scanner input = new Scanner(System.in); 
+    System.out.println("Enter how many Fibonacci numbers will be generated : "); 
+    if(input.hasNextInt() == false){ 
+      for(int i = 0;i < 50;i++){ 
+        System.out.print("*"); 
+      } 
+      System.out.println(); 
+      System.out.println("No number is generated!"); 
+      for(int i = 0;i < 50;i++){ 
+        System.out.print("*"); 
+      } 
+    }else{ 
+      int n = input.nextInt(); 
+      if(n < 1){ 
+        for(int i = 0;i < 50;i++){ 
+          System.out.print("*"); 
+        } 
+        System.out.println("No number is generated!"); 
+        for(int i = 0;i < 50;i++){ 
+          System.out.print("*"); 
+        } 
+      }else{ 
+        ArrayList<Integer> fiboList = new  ArrayList<Integer>(); 
+        if(n == 1){ 
+          fiboList.add(0); 
+        }else{ 
+          fiboList.add(0); 
+          fiboList.add(1); 
+          for(int j = 1;j < n;j++){ 
+            fiboList.add(fiboList.get(j - 1) + fiboList.get(j)); 
+          } 
+          for(int i = 0;i < 50;i++){ 
+            System.out.print("*"); 
+          } 
+          System.out.println("\n"); 
+          for(int  i = 0;i < n;i++){ 
+            System.out.println("Index : " + i + " Value : " + fiboList.get(i)); 
+          } 
+          for(int i = 0;i < 50;i++){ 
+            System.out.print("*"); 
+          } 
+          System.out.println("\n"); 
+          int even = (int) Math.floor((n + 2) / 3); 
+          System.out.println("Count of odd numbers in the list: " + (n - even)); 
+          System.out.println("Count of even numbers in the list: " +  even); 
+        } 
+      } 
+    }  
+  } 
+}

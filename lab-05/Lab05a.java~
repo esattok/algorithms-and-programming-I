@@ -1,0 +1,47 @@
+public class Lab05a {
+  public static void main(String[] args) {
+    int count;
+    int avgCounter;
+    double sum;
+    double avg;
+    double prob;
+    int max;
+    max = 0;
+    sum = 0;
+    count = 0;
+    avgCounter = 0;
+    final int tatalNum = 1000;
+    for (int a = 0; a<1000; a++)
+    {
+      int randomNum = (int)(Math.random()*9000)+1000;
+      String number;
+      number = Integer.toString(randomNum);
+      char midNum1;
+      char midNum2;
+      midNum1 = number.charAt(1);
+      midNum2 = number.charAt(2);
+    if (midNum1 == midNum2)
+    {
+      count++;
+      System.out.println( randomNum );
+    }
+    if (midNum1 != midNum2)
+    {
+      avgcounter++;
+      sum = sum + Math.abs(midNum1-midNum2);
+    }
+      
+    if (midNum1 == midNum2 && randomNum>max )
+    {
+      randomNum = max;
+    }
+    }
+    avg = sum / avgCounter;
+    prob = totalNum / count;
+    System.out.println( "The highest value with same 2nd/3rd digit: " + max );
+    System.out.println( "Probability of generating number with same 2nd/3rd digit: " + prob );
+    System.out.println( "The avarage difference between the 2nd and 3rd digit: ") + avg );
+}
+}
+    
+      

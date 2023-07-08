@@ -1,0 +1,93 @@
+import java.util.Scanner;
+public class Lab05d {
+  public static void main(String[] args) {
+    
+    Scanner scan = new Scanner(System.in);
+    
+    String option1, option2, option3;
+    
+    String input1, input2, input3;
+    
+    String common;
+    int a;
+    double number;
+    double b;
+    double precision;
+    double before;
+    
+    option1 = "Strings";
+    option2 = "Math";
+    option3 = "Exit";
+    b = 1;
+  
+    do 
+    {
+      System.out.println( "**** Make your selection ****" );
+      System.out.println( "Strings - Common characters" );
+      System.out.println( "Math - 1/(1-x) calculation" );
+      System.out.println( "Exit" );
+      System.out.println( "Your selection: " );
+      input1 = scan.next();
+      
+      if (input1.equalsIgnoreCase(option1))
+      {
+        common = " ";
+        System.out.println( "** Finding Common Characters **" );
+        System.out.println( "Enter a string: " );
+        input2 = scan.next();
+        System.out.println( "Enter another string: ");
+        input3 = scan.next();
+        
+        for (a=0; a<input2.length(); a++)
+        {
+          char ch;
+          ch = input2.charAt(a);
+          String letter;
+          letter = Character.toString(ch);
+          
+          if (input3.contains(letter)) {
+            if (common.contains(letter)) {
+              common = common + " " + letter;
+            }
+          }
+        }
+        System.out.println( "Common characters: " + common );
+      }
+      else if (input1.equalsIgnoreCase(option2)) {
+        System.out.println( "** 1/(1-x) Calculation **" );
+        System.out.println( "Enter an x: (-1,1): ");
+        number = scan.nextDouble();
+        System.out.println( "Enter precision: ");
+        precision = scan.nextDouble();
+        System.out.println( "Current result is: " + b );
+      
+      do
+      {
+        before = b;
+        b += number;
+        number = number / 2;
+        System.out.println( "Current result is: " + b );
+      }
+      while (b - before > precision);
+      System.out.println( "Result is: " + b );
+    }
+      else {
+        if (!input1.equalsIgnoreCase(option3)) {
+      System.out.println( "Invalid selection" );
+        }
+    }
+    }
+    while (!input1.equalsIgnoreCase(option3));
+    
+  
+  
+  if (input1.equalsIgnoreCase(option3)) {
+    System.out.println( "Goodbye !" );
+  }
+}
+}
+    
+        
+        
+      
+    

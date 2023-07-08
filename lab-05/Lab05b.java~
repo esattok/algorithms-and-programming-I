@@ -1,0 +1,30 @@
+  import java.util.Scanner;
+  public class Lab05b {
+    public static void main(String[] args) {
+      Scanner scan = new Scanner(System.in);
+      double n;
+      double a;
+      double result;
+      System.out.println( " Enter a positive integer: " );
+     
+      result = 0;
+      if (!scan.hasNextInt() ){
+        System.out.println( " The input n should be an integer. Exiting... ");
+      }
+       else if  (n==0) {
+        System.out.println( "  The input n should be positive. Exiting... " );
+      }
+      else {
+         n = scan.nextInt();
+        for (a = 2; a<=n; a++)
+        {
+          result = result + ((a-1)/a)*Math.pow((-1),(a));
+        }
+      
+      System.out.println( -1 + result);
+    }
+       
+     
+    }
+  }
+                         

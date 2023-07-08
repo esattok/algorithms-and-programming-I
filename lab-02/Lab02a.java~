@@ -1,0 +1,26 @@
+/*
+ * A simple program to print basic outputs.
+ * 
+ * This program prints basic outputs for reader.
+ * 
+ * @Esad İsmail Tök
+ * @26.02.2019
+ */
+public class Lab02a
+{
+  public static void main(String[] args)
+  {
+    System.out.println( "Hello world!" );
+    System.out.println( "This is my car" );
+    
+    System.out.println();   // Empty line between writing and car picture
+    
+    System.out.println( "     ******\n     *    *\n******    *******\n*\t      *\n*** ******** ****\n   *\t*" );
+    System.out.println();   // Empty line between car picture and speed
+   double speed;
+   speed = 62.68;
+   System.out.print( "Its speed is" );
+    System.out.printf( "%5.1f", speed );  // The speed is printed using 5 characters:
+    System.out.println( " km/h." );
+  }
+}

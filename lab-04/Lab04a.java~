@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Lab04a
+{
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    System.out.println( "Enter a positive integer n >= 2: " );
+    
+    int count;
+    int a;
+    int number;
+    
+    count = 0;
+    a = 1;
+    number = scan.nextInt();
+    while (number > a) {
+      a = a * 2;
+      count++;
+    }
+    System.out.println( "The largest pover of 2 less then " + number + " is " + a + " (= 2 ^ " + count + ")" );
+  }
+}
+      

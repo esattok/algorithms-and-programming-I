@@ -1,0 +1,22 @@
+ import java.util.Scanner;
+  public class Lab05c {
+    public static void main(String[] args) {
+      Scanner scan = new Scanner(System.in);
+      char ch;
+      double h;
+      System.out.println( "Enter character to use; " );
+      ch = scan.nextLine().charAt(0);
+      System.out.println( "Enter height of triangle; " );
+      h = scan.nextInt();
+      double i, j, k;
+        for (i = h; i > 0; i--) {
+            for (j = h; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (k = 0; k < (i * 2 - 1); k++) {
+                System.out.print(ch);
+            }
+            System.out.println();
+        }
+    }
+  }
